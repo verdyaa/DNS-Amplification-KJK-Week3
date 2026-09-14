@@ -8,8 +8,14 @@ I Ketut Weda Adikusuma
 ## Apa sih DNS Amplification Attack?
 
 Semua serangan amplifikasi mengeksploitasi perbedaan konsumsi bandwidth antara penyerang dan sumber daya web yang ditargetkan. Ketika disparitas biaya diperbesar di banyak permintaan, volume lalu lintas yang dihasilkan dapat mengganggu infrastruktur jaringan. Dengan mengirimkan kueri kecil yang menghasilkan respons besar, pengguna jahat dapat memperoleh lebih banyak dari lebih sedikit. Dengan mengalikan pembesaran ini dengan meminta setiap bot di botnet membuat permintaan serupa, penyerang dikaburkan dari deteksi dan memperoleh manfaat dari peningkatan lalu lintas serangan.
+
+
 Bot tunggal dalam serangan amplifikasi DNS dapat dipikirkan dalam konteks remaja jahat yang menelepon restoran dan mengatakan “Saya akan memiliki salah satu dari semuanya, silakan hubungi saya kembali dan beri tahu saya seluruh pesanan saya.” Ketika restoran meminta nomor panggilan balik, nomor yang diberikan adalah nomor telepon korban yang ditargetkan. Target kemudian menerima telepon dari restoran dengan banyak informasi yang tidak mereka minta.
+
+
 Sebagai hasil dari setiap bot membuat permintaan untuk membuka resolver DNS dengan alamat IP palsu, yang telah diubah ke alamat IP sumber nyata dari korban yang ditargetkan, target kemudian menerima respons dari resolver DNS. Untuk menciptakan lalu lintas dalam jumlah besar, penyerang menyusun permintaan sedemikian rupa sehingga menghasilkan respons sebesar mungkin dari resolver DNS. Akibatnya, target menerima amplifikasi lalu lintas awal penyerang, dan jaringan mereka menjadi tersumbat dengan lalu lintas palsu, menyebabkan penolakan layanan.
+
+
 ## Studi Kasus
 Studi kasus Contoh Kasus Nyata: Serangan Spamhaus (2013)
 Sumber: [https://bandung.kompas.com/read/2013/03/28/11571269/index.html](https://bandung.kompas.com/read/2013/03/28/11571269/index.html).
@@ -34,7 +40,7 @@ untuk mengidentifikasi kita bisa melihat di wireshark dengan melihat ada beberap
 ### Identifikasi DNS Amplification Attack
 
 1. Query Response Paket DNS Yang diatas batas normal
-Menggunakan Filter 'dns.flags.response == 1 && frame.len > 500', kueri request DNS biasanya berukuran sangat kecil (sekitar 60–70 byte) dan respons nya sangat besar.
+Menggunakan Filter ```dns.flags.response == 1 && frame.len > 500```, kueri request DNS biasanya berukuran sangat kecil (sekitar 60–70 byte) dan respons nya sangat besar.
 
 ![][image2]
 
